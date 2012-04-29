@@ -19,8 +19,7 @@ $ rspec && unicornleap
 For running randomly as you work:
 
 ```bash
-$ cp unicornleapingoften ~/bin/
-$ nohup unicornleapingoften > /dev/null &
+$ nohup ./unicornleapingoften > /dev/null &
 $ exit
 ```
 
