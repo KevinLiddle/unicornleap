@@ -9,10 +9,10 @@ int main (int argc, const char * argv[]) {
     CGFloat W = [[NSScreen mainScreen] frame].size.width;
     CGFloat H = [[NSScreen mainScreen] frame].size.height;
 
-    CGFloat UW = 400.0;
-    CGFloat UH = 400.0;
-    CGFloat W_HALF = W / 2;
-    CGFloat UW_HALF = UW / 2;
+    CGFloat UW = W / 4.0;
+    CGFloat UH = UW; // meh
+    CGFloat W_HALF = W / 2.0;
+    CGFloat UW_HALF = UW / 2.0;
 
     NSRect unicornRect = NSMakeRect(W / 2.0 - (UW / 2.0),
                                     H / 2.0 - (UH / 2.0),
@@ -33,18 +33,19 @@ int main (int argc, const char * argv[]) {
     [window setContentView:unicornView];
 
     for (CGFloat x = -100.0; x < W; x += 20.0) {
-        CGFloat y = UH/40.0 - (pow(x-W_HALF, 2.0) / W_HALF / 2);
+        CGFloat y = UH/40.0 - (pow(x-W_HALF, 2.0) / W_HALF / 2.0);
 
         NSRect unicornRect = NSMakeRect(x-UW_HALF, y, UW, UH);
 
         [window setFrame:unicornRect display:YES animate:NO];
         [window makeKeyAndOrderFront:nil];
 
-        continue;
+        /*
         struct timespec tim, tim2;
         tim.tv_sec  = 0;
         tim.tv_nsec = 1000L;
         nanosleep(&tim , &tim2);
+        */
     }
 
     return 0;
