@@ -32,7 +32,31 @@ int main (int argc, const char * argv[]) {
     [unicornView setImage:unicornImage];
     [window setContentView:unicornView];
 
-    for (CGFloat x = -100.0; x < W; x += 20.0) {
+    int userSpeed = 100;
+    if (argc == 2) {
+      if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
+        printf("%s version 1.0\n", argv[0]);
+        return 0;
+      }
+      else if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
+        printf("usage: %s [-h] [-v] [N]\n", argv[0]);
+        printf("   where N is a whole number specifying the percent of normal speed to run\n");
+        printf("   example: %s 100   # runs at normal speed\n", argv[0]);
+        printf("   example: %s 50    # runs at half speed\n", argv[0]);
+        printf("   example: %s 500   # runs at 5 times normal speed\n", argv[0]);
+        return 0;
+      }
+
+      userSpeed = [[NSString stringWithUTF8String:argv[1]] intValue];
+      if (userSpeed == 0) {
+        printf("Just how do you expect a unicorn to leap at 0%% speed?\n");
+        return 0;
+      }
+    }
+
+    printf("running at %d%% speed\n", userSpeed);
+
+    for (CGFloat x = -100.0; x < W; x += 20.0 * (CGFloat)userSpeed / 100.0) {
         CGFloat y = UH/40.0 - (pow(x-W_HALF, 2.0) / W_HALF / 2.0);
 
         NSRect unicornRect = NSMakeRect(x-UW_HALF, y, UW, UH);
