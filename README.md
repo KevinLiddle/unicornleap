@@ -10,11 +10,21 @@ Use `make` to generate the `unicornleap` binary. Put it somewhere in your path.
 
 ## Usage
 
+For running if and when your tests pass:
+
 ```bash
 $ rspec && unicornleap
 ```
 
-### Credits
+For running randomly as you work:
+
+```bash
+$ cp unicornleapingoften ~/bin/
+$ nohup unicornleapingoften > /dev/null &
+$ exit
+```
+
+## Credits
 
 NSData extensions for Base64 by Matt Gallagher.
 
