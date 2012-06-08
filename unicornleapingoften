@@ -1,2 +1,0 @@
-#!/usr/bin/env ruby
-loop { sleep (rand * 60).round; `unicornleap` }

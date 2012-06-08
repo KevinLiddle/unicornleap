@@ -1,25 +1,25 @@
 ## About
 
-Make a unicorn jump across the bottom of your screen.
+Make Bill Cosby jump across the bottom of your screen.
 
 Perfect for running when your automated tests pass.
 
 ## Install
 
-Use `make` to generate the `unicornleap` binary. Put it somewhere in your path.
+Use `make` to generate the `cosbyleap` binary. Put it somewhere in your path.
 
 ## Usage
 
 For running if and when your tests pass:
 
 ```bash
-$ rspec && unicornleap
+$ rspec && cosbyleap
 ```
 
 For running randomly as you work:
 
 ```bash
-$ nohup ./unicornleapingoften > /dev/null &
+$ nohup ./cosbyleapingoften > /dev/null &
 $ exit
 ```
 

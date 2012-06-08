@@ -1,3 +1,3 @@
 #import <Foundation/Foundation.h>
 
-extern NSString *UnicornImageString;
+extern NSString *CosbyImageString;
