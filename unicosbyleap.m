@@ -1,6 +1,7 @@
 #import <Cocoa/Cocoa.h>
 #import "NSData+Base64.h"
-#import "image.h"
+#import "cosby.h"
+#import "unicorn.h"
 
 int main (int argc, const char * argv[]) {
     [NSAutoreleasePool new];
@@ -14,12 +15,12 @@ int main (int argc, const char * argv[]) {
     CGFloat W_HALF = W / 2.0;
     CGFloat UW_HALF = UW / 2.0;
 
-    NSRect cosbyRect = NSMakeRect(W / 2.0 - (UW / 2.0),
+    NSRect leapRect = NSMakeRect(W / 2.0 - (UW / 2.0),
                                     H / 2.0 - (UH / 2.0),
                                     UW,
                                     UH);
 
-    NSWindow *window = [[NSWindow alloc] initWithContentRect:cosbyRect
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:leapRect
                                                    styleMask:NSBorderlessWindowMask
                                                      backing:NSBackingStoreBuffered
                                                        defer:NO];
@@ -28,9 +29,13 @@ int main (int argc, const char * argv[]) {
     [window setLevel:NSFloatingWindowLevel];
 
     NSImage *cosbyImage = [[NSImage alloc] initWithData:[NSData dataFromBase64String:CosbyImageString]];
-    NSImageView *cosbyView = [[NSImageView alloc] initWithFrame:cosbyRect];
+    //NSImage *unicornImage = [[NSImage alloc] initWithData:[NSData dataFromBase64String:UnicornImageString]];
+    NSImageView *cosbyView = [[NSImageView alloc] initWithFrame:leapRect];
+    //NSImageView *unicornView = [[NSImageView alloc] initWithFrame:leapRect];
     [cosbyView setImage:cosbyImage];
+    //[unicornView setImage:unicornImage];
     [window setContentView:cosbyView];
+    //[window setContentView:unicornView];
 
     int userSpeed = 100;
     if (argc == 2) {
@@ -49,7 +54,7 @@ int main (int argc, const char * argv[]) {
 
       userSpeed = [[NSString stringWithUTF8String:argv[1]] intValue];
       if (userSpeed == 0) {
-        printf("Just how do you expect a Cosby to leap at 0%% speed?\n");
+        printf("Just how do you expect anything to leap at 0%% speed?\n");
         return 0;
       }
     }
@@ -59,9 +64,9 @@ int main (int argc, const char * argv[]) {
     for (CGFloat x = -100.0; x < W; x += 20.0 * (CGFloat)userSpeed / 100.0) {
         CGFloat y = UH/40.0 - (pow(x-W_HALF, 2.0) / W_HALF / 2.0);
 
-        NSRect cosbyRect = NSMakeRect(x-UW_HALF, y, UW, UH);
+        NSRect leapRect = NSMakeRect(x-UW_HALF, y, UW, UH);
 
-        [window setFrame:cosbyRect display:YES animate:NO];
+        [window setFrame:leapRect display:YES animate:NO];
         [window makeKeyAndOrderFront:nil];
 
         /*
