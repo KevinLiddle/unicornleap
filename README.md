@@ -16,10 +16,6 @@ For running if and when rspec tests pass:
 
 Copy .rspec.example to your home directory as .rspec, and set the path to after_specs.rb
 
-## TODO
-
-Figure out how to get "should_receive" failures to be reported as failures
-
 ## Credits
 
 NSData extensions for Base64 by Matt Gallagher.
