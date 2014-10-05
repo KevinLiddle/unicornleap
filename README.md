@@ -1,30 +1,28 @@
 ## About
 
-Make Bill Cosby and/or a unicorn jump across the bottom of your screen.
+Make trolls and unicorns jump across the bottom of your screen.
 
 Perfect for running when your automated tests pass.
 
 ## Install
 
-Use `make` to generate the `cosbyleap`, `unicornleap`, and `unicosbyattack` binaries. Put it somewhere in your path.
+`make trolleap unicornleap`
+
+Put the "trolleap" and "unicornleap" commands somewhere on your PATH
 
 ## Usage
 
-For running if and when your tests pass:
+For running if and when rspec tests pass:
 
-TODO: add that stuff
+Copy .rspec.example to your home directory as .rspec, and set the path to after_specs.rb
 
-For running randomly as you work:
+## TODO
 
-```bash
-$ nohup ./cosbyleapingoften > /dev/null &
-$ nohup ./unicornleapingoften > /dev/null &
-$ exit
-```
+Figure out how to get "should_receive" failures to be reported as failures
 
 ## Credits
 
 NSData extensions for Base64 by Matt Gallagher.
 
 Algorithm by Josh Cheek and Michael Baker.
-The rest of the code by Steven Degutis, and the repo ended up in my control because I forked it.
+The rest of the code by Steven Degutis, and the repo ended up in my control because I forked it and he deleted his github account.

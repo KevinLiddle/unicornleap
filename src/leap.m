@@ -1,9 +1,6 @@
-#import <Cocoa/Cocoa.h>
-#import "NSData+Base64.h"
-#import "cosby.h"
-#import "unicorn.h"
+#import "leap.h"
 
-int main (int argc, const char * argv[]) {
+int leap (NSString *imageString, int argc, char * argv[]) {
     [NSAutoreleasePool new];
     [NSApplication sharedApplication];
 
@@ -28,14 +25,10 @@ int main (int argc, const char * argv[]) {
     [window setOpaque:NO];
     [window setLevel:NSFloatingWindowLevel];
 
-    NSImage *cosbyImage = [[NSImage alloc] initWithData:[NSData dataFromBase64String:CosbyImageString]];
-    //NSImage *unicornImage = [[NSImage alloc] initWithData:[NSData dataFromBase64String:UnicornImageString]];
-    NSImageView *cosbyView = [[NSImageView alloc] initWithFrame:leapRect];
-    //NSImageView *unicornView = [[NSImageView alloc] initWithFrame:leapRect];
-    [cosbyView setImage:cosbyImage];
-    //[unicornView setImage:unicornImage];
-    [window setContentView:cosbyView];
-    //[window setContentView:unicornView];
+    NSImage *image = [[NSImage alloc] initWithData:[NSData dataFromBase64String:imageString]];
+    NSImageView *view = [[NSImageView alloc] initWithFrame:leapRect];
+    [view setImage:image];
+    [window setContentView:view];
 
     int userSpeed = 100;
     if (argc == 2) {
@@ -68,13 +61,6 @@ int main (int argc, const char * argv[]) {
 
         [window setFrame:leapRect display:YES animate:NO];
         [window makeKeyAndOrderFront:nil];
-
-        /*
-        struct timespec tim, tim2;
-        tim.tv_sec  = 0;
-        tim.tv_nsec = 1000L;
-        nanosleep(&tim , &tim2);
-        */
     }
 
     return 0;
