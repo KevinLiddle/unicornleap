@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+50.times do
+  Thread.new do
+    [
+      lambda { `unicornleap` },
+      lambda { `trolleap` }
+    ].sample.call
+  end
+
+  sleep rand(3) / 10.0
+end
