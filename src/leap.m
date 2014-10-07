@@ -9,8 +9,7 @@ int leap (NSString *imageString, int argc, char * argv[]) {
 
     CGFloat UW = W / 4.0;
     CGFloat UH = UW; // meh
-    CGFloat W_HALF = W / 2.0;
-    CGFloat UW_HALF = UW / 2.0;
+    CGFloat ECCENTRICITY = -0.0009;
 
     NSRect leapRect = NSMakeRect(W / 2.0 - (UW / 2.0),
                                     H / 2.0 - (UH / 2.0),
@@ -31,7 +30,7 @@ int leap (NSString *imageString, int argc, char * argv[]) {
     [window setContentView:view];
 
     int userSpeed = 100;
-    if (argc == 2) {
+    if (argc >= 2) {
       if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
         printf("%s version 1.0\n", argv[0]);
         return 0;
@@ -54,13 +53,27 @@ int leap (NSString *imageString, int argc, char * argv[]) {
 
     printf("running at %d%% speed\n", userSpeed);
 
-    for (CGFloat x = -100.0; x < W; x += 20.0 * (CGFloat)userSpeed / 100.0) {
-        CGFloat y = UH/40.0 - (pow(x-W_HALF, 2.0) / W_HALF / 2.0);
+    int peak = 100;
+    if (argc == 3) {
+      peak = [[NSString stringWithUTF8String:argv[2]] intValue];
+      if (peak <= 0) {
+        printf("What's the point of leaping if the peak is 0?\n");
+        return 0;
+      } else if (peak > 100) {
+        printf("Let's be real, you don't want a peak past %i\n", peak);
+        return 0;
+      }
+    }
 
-        NSRect leapRect = NSMakeRect(x-UW_HALF, y, UW, UH);
+    for (CGFloat x = -200.0; x < W; x += 20.0 * (CGFloat)userSpeed / 100.0) {
+      CGFloat y = (ECCENTRICITY * pow(x, 2.0)) + ((peak / 100.0) + 0.5) * x;
 
-        [window setFrame:leapRect display:YES animate:NO];
-        [window makeKeyAndOrderFront:nil];
+      NSRect leapRect = NSMakeRect(x, y, UW, UH);
+      printf("x %f\n", x);
+      printf("y %f\n", y);
+
+      [window setFrame:leapRect display:YES animate:NO];
+      [window makeKeyAndOrderFront:nil];
     }
 
     return 0;

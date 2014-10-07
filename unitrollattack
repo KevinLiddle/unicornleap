@@ -3,8 +3,8 @@
 50.times do
   Thread.new do
     [
-      lambda { `unicornleap` },
-      lambda { `trolleap` }
+      lambda { `unicornleap 100 #{rand(100)}` },
+      lambda { `trolleap 100 #{rand(100)}` }
     ].sample.call
   end
 
