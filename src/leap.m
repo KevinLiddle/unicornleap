@@ -53,7 +53,7 @@ int leap (NSString *imageString, int argc, char * argv[]) {
 
     printf("running at %d%% speed\n", userSpeed);
 
-    int peak = 100;
+    int peak = 50;
     if (argc == 3) {
       peak = [[NSString stringWithUTF8String:argv[2]] intValue];
       if (peak <= 0) {
@@ -69,8 +69,6 @@ int leap (NSString *imageString, int argc, char * argv[]) {
       CGFloat y = (ECCENTRICITY * pow(x, 2.0)) + ((peak / 100.0) + 0.5) * x;
 
       NSRect leapRect = NSMakeRect(x, y, UW, UH);
-      printf("x %f\n", x);
-      printf("y %f\n", y);
 
       [window setFrame:leapRect display:YES animate:NO];
       [window makeKeyAndOrderFront:nil];

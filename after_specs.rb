@@ -10,7 +10,7 @@ class MyRSpec
     end
 
     config.after(:suite) do
-      Thread.new { failures ? `trolleap` : `unicornleap` }
+      MyRSpec.leap(failures)
     end
   end
 
