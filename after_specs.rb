@@ -35,10 +35,10 @@ class MyRSpec
 end
 
 RSpec.configure do |config|
-  case RSpec::Core::Version::STRING.split(".").first.to_i
-  when 2
-    MyRSpec.v2_rspec(config)
-  when 3
+  major_version, minor_version, _ =  RSpec::Core::Version::STRING.split(".").map(&:to_i)
+  if major_version == 3 || (major_version == 2 && minor_version == 99)
     MyRSpec.v3_rspec(config)
+  elsif major_version == 2
+    MyRSpec.v2_rspec(config)
   end
 end
