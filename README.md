@@ -14,7 +14,7 @@ Put the "trolleap" and "unicornleap" commands somewhere on your PATH
 
 For running if and when rspec tests pass:
 
-Copy .rspec.example to your home directory as .rspec, and set the path to after_specs.rb
+Copy .rspec.example to your home directory as .rspec, and set the path to unicorn_leap.rb
 
 ## Credits
 
