@@ -12,9 +12,13 @@ Put the "trolleap" and "unicornleap" commands somewhere on your PATH
 
 ## Usage
 
-For running if and when rspec tests pass:
+### RSpec
+Copy `.rspec.example` to your home directory as `.rspec`, and set the path to unicorn_leap.rb
 
-Copy .rspec.example to your home directory as .rspec, and set the path to after_specs.rb
+### Leiningen
+Copy `profiles.clj.example` as `profiles.clj` into your local `~/.lein/` directory.
+
+When running specs you can add the `unicornleap` formatter with `lein spec -f p -f unicornleap`.
 
 ## Credits
 
